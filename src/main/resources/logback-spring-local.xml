@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+    <springProperty scope="context" name="springAppVersion" source="spring.application.version"/>
+<!--    <springProperty scope="context" name="logstashUrl" source="logstash.url"/>-->
+
+<!--    <contextName>${springAppName}</contextName>-->
+
+<!--    <appender name="logstashNetworkAppender" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+<!--        <destination>${logstashUrl}</destination>-->
+
+<!--        <reconnectionDelay>2000</reconnectionDelay>-->
+
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder">-->
+<!--            <fieldNames>-->
+<!--                <timestamp>@timestamp</timestamp>-->
+<!--                <level>log_level</level>-->
+<!--                <logger>logger_name</logger>-->
+<!--                <message>message</message>-->
+<!--                <thread>thread_name</thread>-->
+<!--            </fieldNames>-->
+<!--            <customFields>-->
+<!--                <appName>${springAppName}</appName>-->
+<!--                <appVersion>${springAppVersion}</appVersion>-->
+<!--            </customFields>-->
+<!--        </encoder>-->
+
+<!--        <keepAliveDuration>1 second</keepAliveDuration>-->
+<!--    </appender>-->
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] [%logger] - %msg [%thread]%n</pattern>
+        </encoder>
+    </appender>
+<!--    <appender name="SENTRY" class="io.sentry.logback.SentryAppender"/>-->
+
+    <root level="INFO">
+<!--        <appender-ref ref="logstashNetworkAppender"/>-->
+<!--        <appender-ref ref="SENTRY"/>-->
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

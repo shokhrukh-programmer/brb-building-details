@@ -1,0 +1,67 @@
+-- -- create sequence template_id_seq as int minvalue 1 start with 1 increment by 1;
+--
+-- -- create table templates
+-- -- (
+-- --     id         bigint    not null,
+-- --     name       text      not null,
+-- --     created_at timestamp not null
+-- -- );
+--
+-- create table building_infos (
+--                                 id bigint PRIMARY KEY,
+--                                 building_name VARCHAR(255) NOT NULL,
+--                                 building_type VARCHAR(100),
+--                                 cadaster_number VARCHAR(100) UNIQUE
+-- );
+--
+-- CREATE TABLE financial_rates (
+--                                  id bigint PRIMARY KEY,
+--                                  building_balance DOUBLE PRECISION NOT NULL,
+--                                  building_remaining_balance DOUBLE PRECISION NOT NULL,
+--                                  building_estimated_value DOUBLE PRECISION NOT NULL,
+--                                  building_id BIGINT UNIQUE NOT NULL,
+--                                  FOREIGN KEY (building_id) REFERENCES building_infos(id) ON DELETE CASCADE
+-- );
+--
+-- CREATE TABLE building_technical_details (
+--                                             id BIGINT PRIMARY KEY,
+--                                             construction_year INT NOT NULL,
+--                                             renovation_period VARCHAR(50),
+--                                             current_state INT NOT NULL,
+--                                             number_of_employees INT NOT NULL,
+--                                             number_of_floors INT NOT NULL,
+--                                             landing_area DOUBLE PRECISION NOT NULL,
+--                                             construction_area DOUBLE PRECISION NOT NULL,
+--                                             total_area DOUBLE PRECISION NOT NULL,
+--                                             total_usable_area DOUBLE PRECISION NOT NULL,
+--                                             building_id BIGINT UNIQUE NOT NULL,
+--                                             FOREIGN KEY (building_id) REFERENCES building_infos(id) ON DELETE CASCADE
+-- );
+--
+--
+-- CREATE TABLE building_photos (
+--                                  id bigint PRIMARY KEY,
+--                                  file_name VARCHAR(255) NOT NULL,
+--                                  file_path TEXT NOT NULL,
+--                                  building_id BIGINT NOT NULL,
+--                                  FOREIGN KEY (building_id) REFERENCES building_technical_details(id) ON DELETE CASCADE
+-- );
+--
+-- CREATE TABLE users (
+--                        id bigserial PRIMARY KEY,
+--                        first_name VARCHAR(100) NOT NULL,
+--                        last_name VARCHAR(100) NOT NULL,
+--                        middle_name VARCHAR(100),
+--                        phone_number VARCHAR(20) UNIQUE NOT NULL,
+--                        email VARCHAR(255) UNIQUE NOT NULL,
+--                        username VARCHAR(50) UNIQUE NOT NULL,
+--                        password TEXT NOT NULL
+-- );
+--
+-- -- alter table users
+-- --     add constraint template_id_pk primary key (id);
+-- --
+-- -- alter table users
+-- --     alter column id set default nextval('template_id_seq');
+--
+-- -- This is a template table. You should change it depending on your table structure.

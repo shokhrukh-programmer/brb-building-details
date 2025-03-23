@@ -1,0 +1,5 @@
+FROM openjdk:23
+# Jar file name must be the same as build final name in the pom xml
+ADD target/template.jar template.jar
+# You can change profile if you want
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev","template.jar"]

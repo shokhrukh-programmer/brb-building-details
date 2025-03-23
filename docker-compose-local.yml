@@ -1,0 +1,18 @@
+networks:
+  template_network-local: # Change network name
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/29 # Change ip if you want
+services:
+  template-local: # change this depending on your project
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    image: registry.brb.uz/template-department/template-image-local
+    container_name: template-local
+    ports:
+      - 7070:7070 # Change port depending on your project
+    networks:
+      template_network-local: # Change network name
+        ipv4_address: 10.0.0.2 # Change ip if you want

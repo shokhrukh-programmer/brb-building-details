@@ -1,0 +1,35 @@
+server:
+  port: 8081 # You can change it if need
+  shutdown: graceful
+  servlet:
+    context-path: "/template-service"
+spring:
+  application:
+    name: "template-app-dev" # You should change it depending on your project. Because it is used in elastic index name
+    version: "1.0.0"
+  liquibase:
+    enabled: true
+    change-log: classpath:db/migration/changelog-master-dev.xml
+    default-schema: public
+    drop-first: false
+    clear-checksums: true
+  datasource:
+    url: "database url" # Change it
+    username: "database username" # Change it
+    password: "database password" # Change it
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none # Do not change it. Always use liquibase
+logstash:
+  url: "http://10.0.0.1:5044" # Change it. Ask system administrator. Use it if you need in dev environment
+sentry:
+  dsn: "http://964769734d32fc484f50b6acf3b9ba94@172.21.50.20:9000/8" # This is a test url. Ask system administrator to provide dsn url for sentry
+  send-default-pii: true
+  traces-sample-rate: 1.0
+  environment: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health" # If you use security, exclude this endpoint
